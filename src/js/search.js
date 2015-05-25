@@ -64,6 +64,7 @@ var search = function() {
         },
         getFriends: function(nickname, success, error) {
             $.getJSON(friendsGetUrl.format(nickname), function(result) {
+                if (result.response > 500) success(0);
                 success(result.response);
             }).fail(function(e) {
                 error();
